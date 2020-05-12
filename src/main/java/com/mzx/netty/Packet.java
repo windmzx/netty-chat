@@ -1,6 +1,6 @@
 package com.mzx.netty;
 
-public abstract class Package {
+public abstract class Packet {
     private byte version = 1;
 
     public byte getVersion() {

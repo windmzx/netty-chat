@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 public class PackageCodec {
     private static final int MAGIC_NUMBER = 0x12345678;
 
-    public byte[] encode(Package pack) {
+    public byte[] encode(Packet pack) {
         byte[] byte_2 = Serializer.DEFAULT.serializer(pack);
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(11);

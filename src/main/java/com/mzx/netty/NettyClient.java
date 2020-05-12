@@ -1,8 +1,6 @@
 package com.mzx.netty;
 
 
-
-
 import com.mzx.Client.MyInBoundHander;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -11,6 +9,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
 
@@ -59,10 +58,18 @@ public class NettyClient {
             b.group(workerGroup);
             b.channel(NioSocketChannel.class);
             b.option(ChannelOption.SO_KEEPALIVE, true);
+            b.option(ChannelOption.SO_REUSEADDR, true);
+
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
+
+                    ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
+                    ch.pipeline().addLast(new PackageDecoder());
+//                    ch.pipeline().addLast(new LoginResponseHandler());
+//                    ch.pipeline().addLast(new MessageResponseHandler());
                     ch.pipeline().addLast(new MyInBoundHander());
+                    ch.pipeline().addLast(new PackageEncoder());
                 }
             });
 

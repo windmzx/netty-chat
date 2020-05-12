@@ -54,7 +54,7 @@ public class ClientHelper {
 //        }
     }
 
-    public void sendMessage(ByteBuf message) {
+    public void sendMessage(Object message) {
 //        NettyMessage bizMsg = new NettyMessage(message);
 //        bizMsg.setLogId(newLogId());
 //        logger.info("发送消息  -- {}", bizMsg.toString());

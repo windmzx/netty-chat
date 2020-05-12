@@ -72,7 +72,7 @@ public class LoginViewController implements ControlledStage, Initializable {
 
     public void logIn() throws IOException {
         StringBuffer result = new StringBuffer();
-        if (model.CheckLogin(txtUsername.getText(), txtHostName.getText(), textPassword.getText(), result, 0)) {
+        if (model.CheckLogin(txtUsername.getText(), "localhost", textPassword.getText(), result, 0)) {
             goToMain();
         } else {
             showError(result.toString());

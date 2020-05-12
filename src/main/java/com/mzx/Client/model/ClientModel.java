@@ -82,6 +82,18 @@ public class ClientModel {
         }
     }
 
+    public void sentMessage(String message) {
+        MessagePackage messagePackage = new MessagePackage();
+        messagePackage.setContent(message);
+        messagePackage.setTo("group");
+        messagePackage.setDate(System.currentTimeMillis());
+        messagePackage.setFrom("我自己");
+        try {
+            clientHelper.sendMessage(messagePackage);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
     public boolean CheckLogin(String username, String IP, String password, StringBuffer buf, int type) throws IOException {
         this.IP = IP; //bind server IP
         clientHelper = new ClientHelper();
@@ -93,8 +105,7 @@ public class ClientModel {
         LoginPackage loginPackage = new LoginPackage();
         loginPackage.setPassword(password);
         loginPackage.setUsername(username);
-        ByteBuf buf1 = PacketCodeC.INSTANCE.encode(loginPackage);
-        clientHelper.sendMessage(buf1);
+        clientHelper.sendMessage(loginPackage);
 //        Map<Integer, Object> map;
 //        if (client == null || client.isClosed()) {
 //            client = new Socket(IP, port);
@@ -342,30 +353,7 @@ public class ClientModel {
      *
      * @param message that must be json string
      */
-    public void sentMessage(String message) {
-        isConnect = true;
-//        if (null == client || client.isClosed()) {
-//            try {
-//                client = new Socket(IP, port);
-//                reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-//                writer = client.getOutputStream();
-//            } catch (IOException exception) {
-//                exception.printStackTrace();
-//            }
-//        }
-        MessagePackage messagePackage = new MessagePackage();
-        messagePackage.setContent(message);
-        messagePackage.setTo("group");
-        messagePackage.setDate(System.currentTimeMillis());
-        messagePackage.setFrom("我自己");
-        try {
-            ByteBuf buf = PacketCodeC.INSTANCE.encode(messagePackage);
-            clientHelper.sendMessage(buf);
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
 
 
     /**

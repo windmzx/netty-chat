@@ -1,5 +1,7 @@
 package com.mzx.netty;
 
+import com.mzx.Client.MessageResponse;
+import com.mzx.netty.type.LoginPackage;
 import com.mzx.netty.type.MessagePackage;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -11,13 +13,12 @@ public class PacketCodeC {
     private PacketCodeC() {
     }
 
-    public ByteBuf encode(Package packet) {
+    public void encode(Packet packet, ByteBuf byteBuf) {
         // 1. 创建 ByteBuf 对象
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
         // 2. 序列化 Java 对象
         byte[] bytes = Serializer.DEFAULT.serializer(packet);
 
-        // 3. 实际编码过程
+        // 2. 实际编码过程
         byteBuf.writeInt(MAGIC_NUMBER);
         byteBuf.writeByte(packet.getVersion());
         byteBuf.writeByte(Serializer.DEFAULT.getSerizlizerAlg());
@@ -25,17 +26,18 @@ public class PacketCodeC {
         byteBuf.writeInt(bytes.length);
         byteBuf.writeBytes(bytes);
 
-        return byteBuf;
     }
 
-    public Package decode(ByteBuf byteBuf) {
+    public Packet decode(ByteBuf byteBuf) {
+//        int anInt = byteBuf.getInt(byteBuf.readerIndex());
+
         // 跳过 magic number
         byteBuf.skipBytes(4);
 
         // 跳过版本号
         byteBuf.skipBytes(1);
 
-        // 序列化算法标识
+        // 序列化算法
         byte serializeAlgorithm = byteBuf.readByte();
 
         // 指令
@@ -47,7 +49,7 @@ public class PacketCodeC {
         byte[] bytes = new byte[length];
         byteBuf.readBytes(bytes);
 
-        Class<? extends Package> requestType = getRequestType(command);
+        Class<? extends Packet> requestType = getRequestType(command);
         Serializer serializer = getSerializer(serializeAlgorithm);
 
         if (requestType != null && serializer != null) {
@@ -67,10 +69,14 @@ public class PacketCodeC {
         }
     }
 
-    private Class<? extends Package> getRequestType(byte command) {
+    private Class<? extends Packet> getRequestType(byte command) {
         switch (command) {
-            case (byte) 2:
+            case Command.LOGIN:
+                return LoginPackage.class;
+            case Command.GROUP_MESSAGE:
                 return MessagePackage.class;
+            case Command.MESSAGE_RESPONSE:
+                return MessageResponse.class;
             default:
                 return MessagePackage.class;
         }

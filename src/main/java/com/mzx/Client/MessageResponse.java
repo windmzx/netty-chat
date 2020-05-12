@@ -1,26 +1,17 @@
-package com.mzx.netty.type;
+package com.mzx.Client;
 
 import com.mzx.netty.Command;
-import com.mzx.netty.Package;
+import com.mzx.netty.Packet;
 
-public class MessagePackage extends Package {
+public class MessageResponse extends Packet {
     @Override
     public Byte getCommond() {
         return Command.GROUP_MESSAGE;
     }
 
-    private String content;
+    private String message;
     private String from;
     private String to;
-    private Long date;
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public String getFrom() {
         return from;
@@ -38,11 +29,11 @@ public class MessagePackage extends Package {
         this.to = to;
     }
 
-    public Long getDate() {
-        return date;
+    public String getMessage() {
+        return message;
     }
 
-    public void setDate(Long date) {
-        this.date = date;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
