@@ -1,14 +1,12 @@
 package com.mzx.Client.model;
 
+import com.mzx.chatcommon.*;
+import com.mzx.model.Message;
 import com.mzx.netty.ClientHelper;
 import com.mzx.netty.NettyClient;
 import com.mzx.bean.*;
-import com.mzx.netty.PacketCodeC;
-import com.mzx.netty.type.LoginPackage;
-import com.mzx.netty.type.Message;
-import com.mzx.netty.type.MessagePackage;
+
 import com.google.gson.Gson;
-import io.netty.buffer.ByteBuf;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -31,7 +29,8 @@ public class ClientModel {
     private String chatUser = "[group]";
     private String thisUser;
     private Gson gson;
-
+    private String myUserid = "123";
+    private String myUserName = "123";
     private LinkedHashMap<String, ArrayList<Message>> userSession;   //用户消息队列存储用
     private Thread keepalive = new Thread(new KeepAliveWatchDog());
     private Thread keepreceive = new Thread(new ReceiveWatchDog(), "123123");
@@ -50,6 +49,27 @@ public class ClientModel {
         userList = FXCollections.observableArrayList();
         chatRecoder = FXCollections.observableArrayList();
         userList.add(user);
+    }
+
+    public void initChatList(List<Friend> friends, List<Group> groups) {
+
+        friends.forEach(friend -> {
+            ClientUser user = new ClientUser();
+            user.setStatus("online");
+            user.setUserName(friend.getUsername());
+            userList.add(user);
+            userSession.put(user.getUserName(), new ArrayList<>());
+        });
+
+
+        groups.forEach(group -> {
+            ClientUser user = new ClientUser();
+            user.setUserName("group" + group.getGroupId());
+            user.setStatus("online");
+
+            userList.add(user);
+            userSession.put("group" + group.getGroupId(), new ArrayList<>());
+        });
     }
 
     private static ClientModel instance;
@@ -74,7 +94,7 @@ public class ClientModel {
                 while (isConnect) {
                     message = reader.readLine();
                     System.out.println("读取服务器信息" + message);
-                    handleMessage(message);
+//                    handleMessage(message);
                 }
             } catch (IOException e) {
 
@@ -82,18 +102,34 @@ public class ClientModel {
         }
     }
 
-    public void sentMessage(String message) {
-        MessagePackage messagePackage = new MessagePackage();
-        messagePackage.setContent(message);
-        messagePackage.setTo("group");
-        messagePackage.setDate(System.currentTimeMillis());
-        messagePackage.setFrom("我自己");
+    public void sentMessage(String targetuserId, String message) {
+        MessageRequest messagePackage = new MessageRequest();
+        messagePackage.setMessage(message);
+        messagePackage.setTargetUserId(targetuserId);
+        messagePackage.setFromUserId(myUserName);
+        messagePackage.setFromUserName(myUserName);
+
         try {
             clientHelper.sendMessage(messagePackage);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
+
+    public void sentGroupMessage(String groupid, String message) {
+
+        GroupMessageRequest request = new GroupMessageRequest();
+        request.setFromUserId(thisUser);
+        request.setFromUserName(thisUser);
+        request.setTargetGroupId(groupid);
+        request.setMessage(message);
+        try {
+            clientHelper.sendMessage(request);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public boolean CheckLogin(String username, String IP, String password, StringBuffer buf, int type) throws IOException {
         this.IP = IP; //bind server IP
         clientHelper = new ClientHelper();
@@ -237,14 +273,26 @@ public class ClientModel {
     }
 
 
-    public void handleMessage(String message) {
+    public void handleMessage(MessageResponse message) {
 //        Map<Integer, Object> gsonMap = GsonUtils.GsonToMap(message);
 //        Integer command = GsonUtils.Double2Integer((Double) gsonMap.get(COMMAND));
         Message m = new Message();
         m.setTimer(LocalDateTime.now().toString());
-        m.setSpeaker("你自己");
-        m.setContent(message);
-        chatRecoder.add(m);
+        if (message.getFromUserId().equals(myUserid)) {
+            m.setSpeaker("我  ");
+        } else {
+            m.setSpeaker(message.getFromUserId());
+        }
+        m.setContent(message.getMessage());
+
+
+        if (chatUser.equals(message.getTargetUserId())) {
+            chatRecoder.add(m);
+//            及时是在目标用户聊天也要加上聊天记录
+            userSession.get(message.getTargetUserId()).add(m);
+        } else {
+            userSession.get(message.getTargetUserId()).add(m);
+        }
 
         System.out.println("服务器发来消息");
 
@@ -281,15 +329,7 @@ public class ClientModel {
 //                });
 //                break;
 //            case COM_CHATALL:
-//                m = new Message();
-//                m.setTimer((String) gsonMap.get(TIME));
-//                m.setSpeaker((String) gsonMap.get(SPEAKER));
-//                m.setContent((String) gsonMap.get(CONTENT));
-//                if (chatUser.equals("[group]")) {
-//                    chatRecoder.add(m);
-//                }
-//                userSession.get("[group]").add(m);
-//                break;
+
 //            case COM_CHATWITH:
 //                String speaker = (String) gsonMap.get(SPEAKER);
 //                String receiver = (String) gsonMap.get(RECEIVER);
@@ -327,7 +367,7 @@ public class ClientModel {
 //            default:
 //                break;
 //        }
-        System.out.println("服务器发来消息" + message + "消息结束");
+//        System.out.println("服务器发来消息" + message + "消息结束");
     }
 
 
@@ -353,7 +393,6 @@ public class ClientModel {
      *
      * @param message that must be json string
      */
-
 
 
     /**

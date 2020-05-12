@@ -1,7 +1,10 @@
 package com.mzx.netty;
 
 
-import com.mzx.Client.MyInBoundHander;
+import com.mzx.Client.LoginResponseHandler;
+import com.mzx.Client.MessageResponseHandler;
+import com.mzx.chatcommon.PackageDecoder;
+import com.mzx.chatcommon.PackageEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -68,7 +71,8 @@ public class NettyClient {
                     ch.pipeline().addLast(new PackageDecoder());
 //                    ch.pipeline().addLast(new LoginResponseHandler());
 //                    ch.pipeline().addLast(new MessageResponseHandler());
-                    ch.pipeline().addLast(new MyInBoundHander());
+                    ch.pipeline().addLast(new LoginResponseHandler());
+                    ch.pipeline().addLast(new MessageResponseHandler());
                     ch.pipeline().addLast(new PackageEncoder());
                 }
             });

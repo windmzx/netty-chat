@@ -7,8 +7,9 @@ import com.mzx.Client.model.ClientModel;
 import com.mzx.Client.stage.ControlledStage;
 import com.mzx.Client.stage.StageController;
 import com.mzx.bean.ClientUser;
-import com.mzx.netty.type.Message;
+
 import com.google.gson.Gson;
+import com.mzx.model.Message;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -93,14 +94,13 @@ public class MainView implements ControlledStage, Initializable {
                     HashMap map = new HashMap();
                     map.put(COMMAND, COM_CHATALL);
                     map.put(CONTENT, textSend.getText().trim());
-                    model.sentMessage(gson.toJson(map));
+                    String userid = seletUser;
+                    model.sentGroupMessage(userid, gson.toJson(map));
                 } else if (pattern == SINGLE) {
-                    HashMap map = new HashMap();
-                    map.put(COMMAND, COM_CHATWITH);
-                    map.put(RECEIVER, seletUser);
-                    map.put(SPEAKER, model.getThisUser());
-                    map.put(CONTENT, textSend.getText().trim());
-                    model.sentMessage(gson.toJson(map));
+
+                    String message = textSend.getText().trim();
+                    String targetUserId = seletUser;
+                    model.sentMessage(seletUser, gson.toJson(message));
                 }
                 textSend.setText("");
             }
@@ -172,21 +172,21 @@ public class MainView implements ControlledStage, Initializable {
                         imageHead.setFitWidth(20);
                         ClientUser user = (ClientUser) item;
                         ImageView imageStatus;
-                        if(user.getUserName().equals("[group]")){
+                        if (user.getUserName().equals("[group]")) {
                             imageStatus = new ImageView(new Image("image/online.png"));
-                        } else if(user.isNotify()==true){
+                        } else if (user.isNotify() == true) {
                             imageStatus = new ImageView(new Image("image/message.png"));
-                        }else {
-                            if(user.getStatus().equals("online")){
+                        } else {
+                            if (user.getStatus().equals("online")) {
                                 imageStatus = new ImageView(new Image("image/online.png"));
-                            }else{
+                            } else {
                                 imageStatus = new ImageView(new Image("image/offline.png"));
                             }
                         }
                         imageStatus.setFitWidth(20);
                         imageStatus.setFitHeight(20);
                         Label label = new Label(user.getUserName());
-                        hbox.getChildren().addAll(imageHead, label,imageStatus);
+                        hbox.getChildren().addAll(imageHead, label, imageStatus);
                         setGraphic(hbox);
                     } else {
                         setGraphic(null);
