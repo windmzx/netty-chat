@@ -51,6 +51,7 @@ public class ClientModel {
         userList.add(user);
     }
 
+
     public void initChatList(List<Friend> friends, List<Group> groups) {
 
         friends.forEach(friend -> {
@@ -272,27 +273,31 @@ public class ClientModel {
         }
     }
 
+    public void addselfmessage(Message message) {
+        //当前聊天框加入消息
+        chatRecoder.add(message);
+        //消息列表加入消息
+        userSession.get(chatUser).add(message);
+    }
+
 
     public void handleMessage(MessageResponse message) {
 //        Map<Integer, Object> gsonMap = GsonUtils.GsonToMap(message);
 //        Integer command = GsonUtils.Double2Integer((Double) gsonMap.get(COMMAND));
         Message m = new Message();
         m.setTimer(LocalDateTime.now().toString());
-        if (message.getFromUserId().equals(myUserid)) {
-            m.setSpeaker("我  ");
-        } else {
-            m.setSpeaker(message.getFromUserId());
-        }
+        m.setSpeaker(message.getFromUserId());
         m.setContent(message.getMessage());
 
 
-        if (chatUser.equals(message.getTargetUserId())) {
+        if (chatUser.equals(message.getFromUserId())) {
             chatRecoder.add(m);
 //            及时是在目标用户聊天也要加上聊天记录
             userSession.get(message.getTargetUserId()).add(m);
         } else {
-            userSession.get(message.getTargetUserId()).add(m);
+            userSession.get(message.getFromUserId()).add(m);
         }
+
 
         System.out.println("服务器发来消息");
 

@@ -27,6 +27,7 @@ import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -101,6 +102,12 @@ public class MainView implements ControlledStage, Initializable {
                     String message = textSend.getText().trim();
                     String targetUserId = seletUser;
                     model.sentMessage(seletUser, gson.toJson(message));
+                    Message m = new Message();
+                    m.setSpeaker("我");
+                    m.setTimer(String.valueOf(LocalDateTime.now()));
+                    m.setContent(message);
+                    model.addselfmessage(m);
+
                 }
                 textSend.setText("");
             }

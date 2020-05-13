@@ -10,26 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="项目拆分备份">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/LoginResponseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mzx/model/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="今天完成了给个人发送消息和给群组发送消息">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/MessageResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/MyInBoundHander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/MessageResponseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/JSONSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/netty/NettyClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/PackageCodec.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/PackageDecoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/PackageEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/Packet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/PacketCodeC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/netty/Serializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +145,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TSQL" />
     <property name="database.data.extractors.current.id" value="SQL Updates" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../learnjava" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -244,7 +228,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MainApp" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mzx.Client.MainApp" />
       <module name="WeChat" />
       <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml" />
@@ -364,7 +348,8 @@
       <workItem from="1589096269182" duration="234000" />
       <workItem from="1589096529256" duration="14648000" />
       <workItem from="1589156976814" duration="29334000" />
-      <workItem from="1589269122070" duration="19799000" />
+      <workItem from="1589269122070" duration="20178000" />
+      <workItem from="1589332522321" duration="6866000" />
     </task>
     <task id="LOCAL-00001" summary="0511">
       <created>1589176343372</created>
@@ -380,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589272799164</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="今天完成了给个人发送消息和给群组发送消息">
+      <created>1589298236509</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589298236509</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,17 +405,18 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="0511" />
     <MESSAGE value="项目拆分备份" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目拆分备份" />
+    <MESSAGE value="今天完成了给个人发送消息和给群组发送消息" />
+    <option name="LAST_COMMIT_MESSAGE" value="今天完成了给个人发送消息和给群组发送消息" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" width="962" height="643" key="#Inspections" timestamp="1589118374851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="395" y="90" width="962" height="643" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1589118374851" />
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589117789883">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589354175936">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1589117789883" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1589354175936" />
     <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1589292316163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -448,10 +441,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="472" y="167" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589098543355" />
-    <state x="307" y="0" key="CommitChangelistDialog2" timestamp="1589272796725">
+    <state x="307" y="0" key="CommitChangelistDialog2" timestamp="1589298233361">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="307" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589272796725" />
+    <state x="307" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589298233361" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1589284541204">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -460,38 +453,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="445" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589275218054" />
-    <state width="1493" height="200" key="GridCell.Tab.0.bottom" timestamp="1589297932452">
+    <state width="1493" height="140" key="GridCell.Tab.0.bottom" timestamp="1589355956857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="200" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589297932452" />
-    <state width="1493" height="200" key="GridCell.Tab.0.center" timestamp="1589297932452">
+    <state width="1493" height="140" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589355956857" />
+    <state width="1493" height="140" key="GridCell.Tab.0.center" timestamp="1589355956857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="200" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589297932452" />
-    <state width="1493" height="200" key="GridCell.Tab.0.left" timestamp="1589297932452">
+    <state width="1493" height="140" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589355956857" />
+    <state width="1493" height="140" key="GridCell.Tab.0.left" timestamp="1589355956856">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="200" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589297932452" />
-    <state width="1493" height="200" key="GridCell.Tab.0.right" timestamp="1589297932452">
+    <state width="1493" height="140" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589355956856" />
+    <state width="1493" height="140" key="GridCell.Tab.0.right" timestamp="1589355956857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="200" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589297932452" />
-    <state width="1493" height="240" key="GridCell.Tab.1.bottom" timestamp="1589297946009">
+    <state width="1493" height="140" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589355956857" />
+    <state width="1493" height="346" key="GridCell.Tab.1.bottom" timestamp="1589355010732">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589297946009" />
-    <state width="1493" height="240" key="GridCell.Tab.1.center" timestamp="1589297946009">
+    <state width="1493" height="346" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589355010732" />
+    <state width="1493" height="346" key="GridCell.Tab.1.center" timestamp="1589355010731">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589297946009" />
-    <state width="1493" height="240" key="GridCell.Tab.1.left" timestamp="1589297946009">
+    <state width="1493" height="346" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589355010731" />
+    <state width="1493" height="346" key="GridCell.Tab.1.left" timestamp="1589355010731">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589297946009" />
-    <state width="1493" height="240" key="GridCell.Tab.1.right" timestamp="1589297946009">
+    <state width="1493" height="346" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589355010731" />
+    <state width="1493" height="346" key="GridCell.Tab.1.right" timestamp="1589355010732">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589297946009" />
+    <state width="1493" height="346" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589355010732" />
     <state x="494" y="132" key="RollbackChangesDialog" timestamp="1589167597608">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -504,18 +497,32 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="304" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1589283667486" />
-    <state x="83" y="144" width="602" height="536" key="find.popup" timestamp="1589298025481">
+    <state x="83" y="144" width="602" height="536" key="find.popup" timestamp="1589355805787">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="83" y="144" width="602" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589298025481" />
+    <state x="83" y="144" width="602" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589355805787" />
+    <state x="470" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1589355641286">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="470" y="168" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1589355641286" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
-          <line>96</line>
+          <line>97</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
+          <line>301</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -524,6 +531,7 @@
         <watch expression="chatUser" language="JAVA" />
         <watch expression="user.getUserName()" language="JAVA" />
         <watch expression="userSession.get(user.getUserName())" language="JAVA" />
+        <watch expression="message.getFromUserId()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
