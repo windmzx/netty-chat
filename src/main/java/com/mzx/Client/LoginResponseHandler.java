@@ -18,8 +18,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         if (loginsuccess) {
             List<Friend> friendList = msg.getFriendList();
             List<Group> groups = msg.getGroups();
-
-            model.initChatList(friendList, groups);
+            model.initChatList(friendList, groups, msg.getYourName());
         } else {
             System.out.println("登陆失败");
         }

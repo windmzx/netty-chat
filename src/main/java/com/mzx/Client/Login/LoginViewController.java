@@ -60,11 +60,8 @@ public class LoginViewController implements ControlledStage, Initializable {
         myController.getStage(MainApp.mainViewID).setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                try {
-                    model.disConnect();
-                } catch (IOException exception) {
-                    exception.printStackTrace();
-                }
+                //                    model.disConnect();
+                System.out.println("123");
                 myController.unloadStage(MainApp.EmojiSelectorID);
             }
         });

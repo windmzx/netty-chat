@@ -1,6 +1,7 @@
 package com.mzx.netty;
 
 
+import com.mzx.Client.CreatGroupResponseHandler;
 import com.mzx.Client.LoginResponseHandler;
 import com.mzx.Client.MessageResponseHandler;
 import com.mzx.chatcommon.PackageDecoder;
@@ -73,6 +74,7 @@ public class NettyClient {
 //                    ch.pipeline().addLast(new MessageResponseHandler());
                     ch.pipeline().addLast(new LoginResponseHandler());
                     ch.pipeline().addLast(new MessageResponseHandler());
+                    ch.pipeline().addLast(new CreatGroupResponseHandler());
                     ch.pipeline().addLast(new PackageEncoder());
                 }
             });

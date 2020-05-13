@@ -1,5 +1,6 @@
 package com.mzx.Client.model;
 
+import com.mzx.Client.chatroom.MainView;
 import com.mzx.chatcommon.*;
 import com.mzx.model.Message;
 import com.mzx.netty.ClientHelper;
@@ -18,7 +19,7 @@ import java.util.*;
 import static com.mzx.Utils.Constants.*;
 
 public class ClientModel {
-    private ClientHelper clientHelper;
+    public ClientHelper clientHelper;
     private BufferedReader reader;
     private OutputStream writer;
     private Socket client;
@@ -30,11 +31,9 @@ public class ClientModel {
     private String thisUser;
     private Gson gson;
     private String myUserid = "123";
-    private String myUserName = "123";
+    public String myUserName = "123";
     private LinkedHashMap<String, ArrayList<Message>> userSession;   //用户消息队列存储用
     private Thread keepalive = new Thread(new KeepAliveWatchDog());
-    private Thread keepreceive = new Thread(new ReceiveWatchDog(), "123123");
-
     private ObservableList<ClientUser> userList;
     private ObservableList<Message> chatRecoder;
 
@@ -52,8 +51,8 @@ public class ClientModel {
     }
 
 
-    public void initChatList(List<Friend> friends, List<Group> groups) {
-
+    public void initChatList(List<Friend> friends, List<Group> groups,String myUserName) {
+        this.myUserName = myUserName;
         friends.forEach(friend -> {
             ClientUser user = new ClientUser();
             user.setStatus("online");
@@ -65,11 +64,11 @@ public class ClientModel {
 
         groups.forEach(group -> {
             ClientUser user = new ClientUser();
-            user.setUserName("group" + group.getGroupId());
+            user.setUserName(group.getGroupId());
             user.setStatus("online");
 
             userList.add(user);
-            userSession.put("group" + group.getGroupId(), new ArrayList<>());
+            userSession.put(group.getGroupId(), new ArrayList<>());
         });
     }
 
@@ -86,22 +85,43 @@ public class ClientModel {
         return instance;
     }
 
-    class ReceiveWatchDog implements Runnable {
-        @Override
-        public void run() {
-            try {
-                System.out.println(" Receieve start" + Thread.currentThread());
-                String message;
-                while (isConnect) {
-                    message = reader.readLine();
-                    System.out.println("读取服务器信息" + message);
-//                    handleMessage(message);
-                }
-            } catch (IOException e) {
+    public void joinGroup(CreateGroupResponse msg) {
 
-            }
+        ClientUser user = new ClientUser();
+        user.setUserName(msg.getGroupId());
+        user.setStatus("online");
+        userList.add(user);
+        userSession.put(msg.getGroupId(), new ArrayList<>());
+        Message message = new Message();
+        message.setSpeaker(msg.getGroupCreater());
+        String helloMessage = "" + msg.getGroupCreater() + "邀请你加入群聊\n" +
+                "同时加入群聊的有：\n";
+
+        for (String username : msg.getGroupUsers()) {
+            helloMessage = helloMessage + username + "\n";
         }
+        message.setContent(helloMessage);
+
+        userSession.get(msg.getGroupId()).add(message);
+
     }
+
+//    class ReceiveWatchDog implements Runnable {
+//        @Override
+//        public void run() {
+//            try {
+//                System.out.println(" Receieve start" + Thread.currentThread());
+//                String message;
+//                while (isConnect) {
+//                    message = reader.readLine();
+//                    System.out.println("读取服务器信息" + message);
+////                    handleMessage(message);
+//                }
+//            } catch (IOException e) {
+//
+//            }
+//        }
+//    }
 
     public void sentMessage(String targetuserId, String message) {
         MessageRequest messagePackage = new MessageRequest();
@@ -231,6 +251,10 @@ public class ClientModel {
     public String getThisUser() {
         return thisUser;
     }
+    public void setThisUser(String username){
+        this.thisUser = username;
+        MainView.getInstance().setUser();
+    }
 
     class KeepAliveWatchDog implements Runnable {
         @Override
@@ -249,29 +273,30 @@ public class ClientModel {
                 e.printStackTrace();
             }
         }
+
     }
 
 
     /**
      * disconnect
-     */
-    public void disConnect() throws IOException {
-        isConnect = false;
-        keepalive.stop();
-        keepreceive.stop();
-        if (writer != null) {
-            writer.close();
-            writer = null;
-        }
-        if (client != null) {
-            try {
-                client.close();
-                client = null;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//     */
+//    public void disConnect() throws IOException {
+//        isConnect = false;
+//        keepalive.stop();
+//        keepreceive.stop();
+//        if (writer != null) {
+//            writer.close();
+//            writer = null;
+//        }
+//        if (client != null) {
+//            try {
+//                client.close();
+//                client = null;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     public void addselfmessage(Message message) {
         //当前聊天框加入消息

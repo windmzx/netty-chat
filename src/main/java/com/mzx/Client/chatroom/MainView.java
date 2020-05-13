@@ -9,7 +9,9 @@ import com.mzx.Client.stage.StageController;
 import com.mzx.bean.ClientUser;
 
 import com.google.gson.Gson;
+import com.mzx.chatcommon.CreateGroupRequest;
 import com.mzx.model.Message;
+import com.mzx.netty.ClientHelper;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,18 +19,24 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.swing.*;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.mzx.Utils.Constants.*;
@@ -42,6 +50,9 @@ public class MainView implements ControlledStage, Initializable {
     public TextArea textSend;
     @FXML
     public Button btnSend;
+
+    @FXML
+    public Button btnCreateGroup;
     @FXML
     public ListView chatWindow;
     @FXML
@@ -78,6 +89,11 @@ public class MainView implements ControlledStage, Initializable {
         ;
     }
 
+    public void setUser() {
+        labUserName.setText("Welcome " + model.getThisUser() + "!");
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -88,6 +104,7 @@ public class MainView implements ControlledStage, Initializable {
         chatWindow.setItems(chatReccder);
         thisUser = model.getThisUser();
         labUserName.setText("Welcome " + model.getThisUser() + "!");
+
         btnSend.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -154,6 +171,38 @@ public class MainView implements ControlledStage, Initializable {
     public void onEmojiBtnClcked() {
         stageController.loadStage(MainApp.EmojiSelectorID, MainApp.EmojiSelectorRes);
         stageController.setStage(MainApp.EmojiSelectorID);
+    }
+
+    @FXML
+    public void onCreateGroup() {
+        ClientHelper clientHelper = model.clientHelper;
+        Stage secondStage = new Stage();
+        Label label = new Label("新窗口"); // 放一个标签
+        Button button = new Button("创建群聊");
+        TextField textArea = new TextField();
+        button.setOnAction(actionEvent -> {
+            String text = textArea.getText();
+            System.out.println("你的输入内容是" + text);
+            CreateGroupRequest request = new CreateGroupRequest();
+            request.setGroupCreater(model.myUserName);
+            String[] s = text.split(" ");
+            List<String> users = new ArrayList<>();
+            for (String s1 : s) {
+                users.add(s1);
+            }
+            request.setGroupUsers(users);
+            clientHelper.sendMessage(request);
+        });
+        VBox layout = new VBox(10);
+
+
+        layout.getChildren().addAll(label, textArea, button);
+//        secondPane.getChildren().add(textArea);
+        layout.setAlignment(Pos.CENTER_LEFT);
+        Scene secondScene = new Scene(layout, 300, 200);
+
+        secondStage.setScene(secondScene);
+        secondStage.show();
     }
 
     public TextArea getMessageBoxTextArea() {
