@@ -41,7 +41,6 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
         String userId = userService.vaildLogin(username, password);
         if (!userId.equals("-1")) {
             log.warn("登陆成功");
-            SessionUtil.bindSession(new Session(username, msg.getUsername()), ctx.channel());
             LoginResponse response = new LoginResponse();
 
             List<UserDao> friendDaos = friendService.getUserFriends(userId);
