@@ -109,15 +109,10 @@ public class MainView implements ControlledStage, Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (pattern == GROUP) {
-                    HashMap map = new HashMap();
-                    map.put(COMMAND, COM_CHATALL);
-                    map.put(CONTENT, textSend.getText().trim());
-                    String userid = seletUser;
-                    model.sentGroupMessage(userid, gson.toJson(map));
+                    model.sentGroupMessage(seletUser, textSend.getText().trim());
                 } else if (pattern == SINGLE) {
 
                     String message = textSend.getText().trim();
-                    String targetUserId = seletUser;
                     model.sentMessage(seletUser, gson.toJson(message));
                     Message m = new Message();
                     m.setSpeaker("我");
@@ -133,11 +128,11 @@ public class MainView implements ControlledStage, Initializable {
         userGroup.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             ClientUser user = (ClientUser) newValue;
             System.out.println("You are selecting " + user.getUserName());
-            if (user.getUserName().equals("[group]")) {
+            if (user.getUserName().contains("[group]")) {
                 pattern = GROUP;
-                if (!seletUser.equals("[group]")) {
-                    model.setChatUser("[group]");
-                    seletUser = "[group]";
+                if (!seletUser.equals(user.getUserName())) {
+                    model.setChatUser(user.getUserName());
+                    seletUser = user.getUserName();
                     labChatTip.setText("Group Chat");
                 }
             } else {
@@ -177,7 +172,7 @@ public class MainView implements ControlledStage, Initializable {
     public void onCreateGroup() {
         ClientHelper clientHelper = model.clientHelper;
         Stage secondStage = new Stage();
-        Label label = new Label("新窗口"); // 放一个标签
+        Label label = new Label("输入你的好友ID创建群聊"); // 放一个标签
         Button button = new Button("创建群聊");
         TextField textArea = new TextField();
         button.setOnAction(actionEvent -> {

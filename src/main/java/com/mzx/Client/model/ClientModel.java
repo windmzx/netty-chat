@@ -51,7 +51,7 @@ public class ClientModel {
     }
 
 
-    public void initChatList(List<Friend> friends, List<Group> groups,String myUserName) {
+    public void initChatList(List<Friend> friends, List<Group> groups, String myUserName) {
         this.myUserName = myUserName;
         friends.forEach(friend -> {
             ClientUser user = new ClientUser();
@@ -140,8 +140,8 @@ public class ClientModel {
     public void sentGroupMessage(String groupid, String message) {
 
         GroupMessageRequest request = new GroupMessageRequest();
-        request.setFromUserId(thisUser);
-        request.setFromUserName(thisUser);
+        request.setFromUserId(myUserName);
+        request.setFromUserName(myUserName);
         request.setTargetGroupId(groupid);
         request.setMessage(message);
         try {
@@ -251,7 +251,8 @@ public class ClientModel {
     public String getThisUser() {
         return thisUser;
     }
-    public void setThisUser(String username){
+
+    public void setThisUser(String username) {
         this.thisUser = username;
         MainView.getInstance().setUser();
     }
@@ -279,7 +280,8 @@ public class ClientModel {
 
     /**
      * disconnect
-//     */
+     * //
+     */
 //    public void disConnect() throws IOException {
 //        isConnect = false;
 //        keepalive.stop();
@@ -297,7 +299,6 @@ public class ClientModel {
 //            }
 //        }
 //    }
-
     public void addselfmessage(Message message) {
         //当前聊天框加入消息
         chatRecoder.add(message);
@@ -323,8 +324,21 @@ public class ClientModel {
             userSession.get(message.getFromUserId()).add(m);
         }
 
-
         System.out.println("服务器发来消息");
+    }
+
+    public void handleGroupMessage(GroupMessageResponse messageResponse) {
+        Message m = new Message();
+        m.setSpeaker(messageResponse.getFromUserId());
+        m.setTimer(LocalDateTime.now().toString());
+        m.setContent(messageResponse.getMessage());
+        if (chatUser.equals(messageResponse.getTargetGroupId())) {
+            chatRecoder.add(m);
+            userSession.get(messageResponse.getTargetGroupId()).add(m);
+        } else {
+            userSession.get(messageResponse.getTargetGroupId()).add(m);
+        }
+    }
 
 //        switch (command) {
 //            case COM_GROUP:
@@ -398,7 +412,6 @@ public class ClientModel {
 //                break;
 //        }
 //        System.out.println("服务器发来消息" + message + "消息结束");
-    }
 
 
     /**
