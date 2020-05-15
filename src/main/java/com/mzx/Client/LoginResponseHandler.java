@@ -1,7 +1,6 @@
 package com.mzx.Client;
 
 import com.mzx.Client.model.ClientModel;
-import com.mzx.bean.ClientUser;
 import com.mzx.chatcommon.Friend;
 import com.mzx.chatcommon.Group;
 import com.mzx.chatcommon.LoginResponse;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponse> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LoginResponse msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, LoginResponse msg) {
         ClientModel model = ClientModel.getInstance();
         boolean loginsuccess = msg.isSuccess();
         if (loginsuccess) {

@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.mzx.Client.MainApp.mainViewID;
+
 public class LoginViewController implements ControlledStage, Initializable {
 
     @FXML
@@ -65,6 +67,7 @@ public class LoginViewController implements ControlledStage, Initializable {
                 myController.unloadStage(MainApp.EmojiSelectorID);
             }
         });
+        myController.getStage(MainApp.mainViewID).setOnCloseRequest(windowEvent -> System.exit(0));
     }
 
     public void logIn() throws IOException {
