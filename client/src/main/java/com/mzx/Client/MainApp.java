@@ -18,7 +18,6 @@ public class MainApp extends Application {
     private StageController stageController;
 
 
-
     @Override
     public void start(Stage primaryStage) {
         //新建一个StageController控制器
@@ -32,6 +31,10 @@ public class MainApp extends Application {
 
         //显示MainView舞台
         stageController.setStage(loginViewID);
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            System.exit(0);
+        });
+
     }
 
 

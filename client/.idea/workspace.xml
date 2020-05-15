@@ -10,13 +10,37 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="群聊功能实现">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="修复推出">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module_wechat.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/Login/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/Login/LoginViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/LoginResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/LoginResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/DBTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/DbUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/createdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Dao/db-config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Server/LocalServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Server/MasterServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Server/WorkServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mzx/Utils/GsonUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wechat.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wechat.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/WeChat$MainApp.coverage" NAME="MainApp Coverage Results" MODIFIED="1512005069195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -110,6 +134,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1bfWz5mB65XZAnNHxuhaSopydU1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -150,7 +177,10 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.JRebelSettingsComponent" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -352,6 +382,9 @@
       <workItem from="1589379702793" duration="3090000" />
       <workItem from="1589422060006" duration="10089000" />
       <workItem from="1589447422876" duration="407000" />
+      <workItem from="1589457571586" duration="3195000" />
+      <workItem from="1589463401310" duration="1552000" />
+      <workItem from="1589507666984" duration="3135000" />
     </task>
     <task id="LOCAL-00001" summary="0511">
       <created>1589176343372</created>
@@ -432,7 +465,8 @@
     <MESSAGE value="修改消息逻辑 本地直接添加自己的消息" />
     <MESSAGE value="可以创建群聊" />
     <MESSAGE value="群聊功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="群聊功能实现" />
+    <MESSAGE value="清理文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="清理文件" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" width="962" height="643" key="#Inspections" timestamp="1589118374851">
@@ -459,18 +493,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="507" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1589176521645" />
-    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589276924314">
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589464138561">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589276924314" />
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589464138561" />
     <state x="472" y="167" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1589098543355">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="472" y="167" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589098543355" />
-    <state x="307" y="0" key="CommitChangelistDialog2" timestamp="1589433782161">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="307" y="0" key="CommitChangelistDialog2" timestamp="1589510703937">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="307" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589382847658" />
+    <state x="307" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589510703937" />
     <state x="307" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1589433782161" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1589284541204">
       <screen x="0" y="0" width="1536" height="824" />
@@ -480,62 +514,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="445" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589275218054" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1589447829573">
+    <state width="1493" height="357" key="GridCell.Tab.0.bottom" timestamp="1589510579377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589447829573" />
+    <state width="1493" height="357" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589510579377" />
     <state width="952" height="344" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1589447829573">
+    <state width="1493" height="357" key="GridCell.Tab.0.center" timestamp="1589510579377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589447829573" />
+    <state width="1493" height="357" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589510579377" />
     <state width="952" height="344" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1589447829573">
+    <state width="1493" height="357" key="GridCell.Tab.0.left" timestamp="1589510579377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589447829573" />
+    <state width="1493" height="357" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589510579377" />
     <state width="952" height="344" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1589447829573">
+    <state width="1493" height="357" key="GridCell.Tab.0.right" timestamp="1589510579377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589447829573" />
+    <state width="1493" height="357" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589510579377" />
     <state width="952" height="344" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="952" height="344" key="GridCell.Tab.1.bottom" timestamp="1589433940307">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="249" key="GridCell.Tab.1.bottom" timestamp="1589464095588">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="952" height="344" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589431668014" />
+    <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589464095588" />
     <state width="952" height="344" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="952" height="344" key="GridCell.Tab.1.center" timestamp="1589433940307">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="249" key="GridCell.Tab.1.center" timestamp="1589464095588">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="952" height="344" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589431668014" />
+    <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589464095588" />
     <state width="952" height="344" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="952" height="344" key="GridCell.Tab.1.left" timestamp="1589433940307">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="249" key="GridCell.Tab.1.left" timestamp="1589464095588">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="952" height="344" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589431668014" />
+    <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589464095588" />
     <state width="952" height="344" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
-    <state width="952" height="344" key="GridCell.Tab.1.right" timestamp="1589433940307">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="249" key="GridCell.Tab.1.right" timestamp="1589464095588">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="952" height="344" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589431668014" />
+    <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589464095588" />
     <state width="952" height="344" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1589433940307" />
     <state x="494" y="132" key="RollbackChangesDialog" timestamp="1589167597608">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="494" y="132" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589167597608" />
-    <state x="222" y="0" key="SettingsEditor" timestamp="1589425055104">
+    <state x="222" y="0" key="SettingsEditor" timestamp="1589463645198">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="222" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589425055104" />
+    <state x="222" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589463645198" />
     <state x="304" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589283667486">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="304" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1589283667486" />
-    <state x="306" y="131" width="602" height="586" key="find.popup" timestamp="1589433215441">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="557" y="266" width="602" height="558" key="find.popup" timestamp="1589510294208">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="306" y="125" width="602" height="558" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589430795522" />
+    <state x="557" y="266" width="602" height="558" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589510294208" />
     <state x="306" y="131" width="602" height="586" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1589433215441" />
     <state x="470" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1589355641286">
       <screen x="0" y="0" width="1536" height="824" />
@@ -546,33 +580,23 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
-          <line>256</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java</url>
-          <line>92</line>
+          <line>89</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
-          <line>330</line>
+          <line>220</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/chatroom/MainView.java</url>
-          <line>111</line>
+          <line>109</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mzx/Client/model/ClientModel.java</url>
-          <line>141</line>
+          <line>115</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>

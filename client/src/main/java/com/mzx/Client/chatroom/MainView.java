@@ -1,14 +1,13 @@
 package com.mzx.Client.chatroom;
 
 
+import com.google.gson.Gson;
 import com.mzx.Client.MainApp;
 import com.mzx.Client.emojis.EmojiDisplayer;
 import com.mzx.Client.model.ClientModel;
 import com.mzx.Client.stage.ControlledStage;
 import com.mzx.Client.stage.StageController;
 import com.mzx.bean.ClientUser;
-
-import com.google.gson.Gson;
 import com.mzx.chatcommon.CreateGroupRequest;
 import com.mzx.model.Message;
 import com.mzx.netty.ClientHelper;
@@ -24,23 +23,21 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.swing.*;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.mzx.Utils.Constants.*;
-import static com.mzx.Utils.Constants.CONTENT;
+import static com.mzx.Client.MainApp.mainViewID;
+import static com.mzx.Utils.Constants.GROUP;
+import static com.mzx.Utils.Constants.SINGLE;
 
 public class MainView implements ControlledStage, Initializable {
 
@@ -97,6 +94,7 @@ public class MainView implements ControlledStage, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
         model = ClientModel.getInstance();
         uselist = model.getUserList();
         chatReccder = model.getChatRecoder();
@@ -113,7 +111,7 @@ public class MainView implements ControlledStage, Initializable {
                 } else if (pattern == SINGLE) {
 
                     String message = textSend.getText().trim();
-                    model.sentMessage(seletUser, gson.toJson(message));
+                    model.sentMessage(seletUser, message);
                     Message m = new Message();
                     m.setSpeaker("我");
                     m.setTimer(String.valueOf(LocalDateTime.now()));
