@@ -5,7 +5,6 @@ import com.mzx.chatcommon.Friend;
 import com.mzx.chatcommon.Group;
 import com.mzx.chatcommon.LoginPackage;
 import com.mzx.chatcommon.LoginResponse;
-import com.mzx.chatserver.dao.FriendDao;
 import com.mzx.chatserver.dao.UserDao;
 import com.mzx.chatserver.netty.util.Session;
 import com.mzx.chatserver.netty.util.SessionUtil;
@@ -17,7 +16,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +39,6 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
         String userId = userService.vaildLogin(username, password);
         if (!userId.equals("-1")) {
             log.warn("登陆成功");
-            SessionUtil.bindSession(new Session(username, msg.getUsername()), ctx.channel());
             LoginResponse response = new LoginResponse();
 
             List<UserDao> friendDaos = friendService.getUserFriends(userId);
@@ -74,5 +71,6 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("连接丢失");
+        SessionUtil.unBindSession(ctx.channel());
     }
 }

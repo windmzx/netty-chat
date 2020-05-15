@@ -45,7 +45,7 @@ public class GroupCreateHandler extends SimpleChannelInboundHandler<CreateGroupR
             i = random.nextInt(1000);
             groupId = "[group]" + i;
         }
-        SessionUtil.bindChannelGroup(groupId, channelGroup);
+        SessionUtil.bindChannelGroup(ctx.channel(),groupId, channelGroup);
         response.setGroupId(groupId);
         channelGroup.writeAndFlush(response);
     }
