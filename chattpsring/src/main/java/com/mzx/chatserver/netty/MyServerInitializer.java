@@ -15,6 +15,9 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Autowired
     LoginHandler loginHandler;
 
+    @Autowired
+    AuthHandler authHandler;
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
@@ -30,7 +33,7 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
 //        pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
 //        pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         pipeline.addLast(loginHandler);
-        pipeline.addLast(AuthHandler.INSTANCE);
+        pipeline.addLast(authHandler);
         pipeline.addLast(new MessageHandler());
         pipeline.addLast(new GroupCreateHandler());
         pipeline.addLast(new GroupMessageHandler());
