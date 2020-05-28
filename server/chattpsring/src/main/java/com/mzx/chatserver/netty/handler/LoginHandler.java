@@ -15,16 +15,24 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Slf4j
 @Component
 @ChannelHandler.Sharable
 public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
+    private static ExecutorService executor = Executors.newFixedThreadPool(10);
+
 
     @Autowired
     UserService userService;
@@ -33,9 +41,18 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
     FriendService friendService;
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LoginPackage msg) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx, LoginPackage msg) throws Exception {
         String username = msg.getUsername();
         String password = msg.getPassword();
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                doLogin(ctx, msg, username, password);
+            }
+        });
+    }
+
+    public void doLogin(ChannelHandlerContext ctx, LoginPackage msg, String username, String password) {
         String userId = userService.vaildLogin(username, password);
         if (!userId.equals("-1")) {
             log.warn("登陆成功");
@@ -64,7 +81,7 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginPackage> {
         } else {
             LoginResponse response = new LoginResponse();
             response.setSuccess(false);
-            ctx.writeAndFlush(response);
+            ctx.channel().writeAndFlush(response);
         }
     }
 
