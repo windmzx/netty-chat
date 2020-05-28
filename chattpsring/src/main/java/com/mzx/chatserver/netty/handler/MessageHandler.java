@@ -44,7 +44,7 @@ public class MessageHandler extends SimpleChannelInboundHandler<MessageRequest> 
             //目标客户不在线 应该持久化消息
             System.err.println("[" + msgreq.getTargetUserId() + "] 不在线，发送失败!");
 
-            ctx.writeAndFlush(messageResponsePacket);
+            ctx.channel().writeAndFlush(messageResponsePacket);
         }
     }
 
